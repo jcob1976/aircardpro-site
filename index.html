@@ -5,86 +5,95 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>AirCard Pro - The Last Business Card You'll Ever Need</title>
   <style>
+    /* Background & Text */
     body {
       font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
-      background-color: #1e1e1e;
+      background-color: #121212; /* deep dark for contrast */
+      color: #f1f1f1;
       margin: 0;
       padding: 0;
       text-align: center;
-      color: #fff;
     }
+
+    /* Logo */
     header {
       padding: 30px 20px 10px 20px;
     }
     header img {
-      max-width: 120px;
-      margin-bottom: 15px;
+      max-width: 100px;
+      margin-bottom: 20px;
+      transition: transform 0.3s ease;
     }
+    header img:hover {
+      transform: scale(1.05);
+    }
+
+    /* Headline */
     h1 {
       font-size: 2rem;
-      color: #0096ff;
+      color: #00a2ff;
       margin-bottom: 10px;
+      animation: fadeInDown 0.8s ease forwards;
     }
+
+    /* Subtext */
     p.subtext {
       font-size: 1.1rem;
+      color: #ccc;
+      line-height: 1.5;
       max-width: 500px;
       margin: 0 auto 30px auto;
-      line-height: 1.5;
+      animation: fadeInUp 0.8s ease forwards;
     }
+
+    /* Form Container */
     .form-container {
       display: flex;
       justify-content: center;
       padding: 20px;
     }
-    .form-box {
-      background-color: #2b2b2b;
-      border: 2px solid #0096ff;
-      border-radius: 8px;
+
+    /* Form Box */
+    .ml-form-embedWrapper {
+      background: #1e1e1e !important;
+      border: 2px solid #00a2ff !important;
+      border-radius: 10px !important;
       padding: 20px;
-      width: 100%;
-      max-width: 500px;
+      animation: fadeInUp 1s ease forwards;
     }
-    input[type="email"] {
-      padding: 10px;
-      width: 100%;
-      border-radius: 4px;
-      border: 2px solid #0096ff;
+
+    /* Input Field */
+    .ml-form-embedWrapper input[type="email"] {
+      background: #121212 !important;
+      border: 2px solid #00a2ff !important;
+      border-radius: 6px !important;
+      color: #fff !important;
+      padding: 12px !important;
+      font-size: 1rem !important;
+    }
+
+    /* Submit Button */
+    .ml-form-embedWrapper button.primary {
+      background: #00a2ff !important;
+      border-radius: 8px !important;
+      padding: 12px;
       font-size: 1rem;
-      margin-bottom: 10px;
+      font-weight: bold;
+      transition: background 0.3s ease, box-shadow 0.3s ease;
     }
-    .checkbox-label {
-      display: flex;
-      align-items: center;
-      font-size: 0.9rem;
-      margin-bottom: 10px;
+    .ml-form-embedWrapper button.primary:hover {
+      background: #0090e0 !important;
+      box-shadow: 0 0 10px #00a2ff;
     }
-    .checkbox-label input {
-      margin-right: 8px;
+
+    /* Animations */
+    @keyframes fadeInUp {
+      from { opacity: 0; transform: translateY(20px); }
+      to { opacity: 1; transform: translateY(0); }
     }
-    button {
-      background-color: #0096ff;
-      color: #fff;
-      padding: 10px;
-      width: 100%;
-      border: none;
-      border-radius: 4px;
-      font-size: 1rem;
-      cursor: pointer;
-      transition: background 0.2s ease-in-out;
-    }
-    button:hover {
-      background-color: #007acc;
-    }
-    @media (max-width: 600px) {
-      h1 {
-        font-size: 1.5rem;
-      }
-      p.subtext {
-        font-size: 1rem;
-      }
-      .form-box {
-        padding: 15px;
-      }
+    @keyframes fadeInDown {
+      from { opacity: 0; transform: translateY(-20px); }
+      to { opacity: 1; transform: translateY(0); }
     }
   </style>
 </head>
@@ -102,17 +111,36 @@
 
   <!-- FORM -->
   <div class="form-container">
-    <div class="form-box">
-      <form action="https://assets.mailerlite.com/jsonp/1712398/forms/161825890702984753/subscribe" method="post" target="_blank">
-        <input aria-label="email" aria-required="true" type="email" name="fields[email]" placeholder="Email" autocomplete="email" required>
-        <label class="checkbox-label">
-          <input type="checkbox">
-          Opt in to receive news and updates.
-        </label>
-        <input type="hidden" name="ml-submit" value="1">
-        <button type="submit">Subscribe</button>
-      </form>
+    <!-- MailerLite Form Embed -->
+    <div id="mlb2-29209213" class="ml-form-embedContainer ml-subscribe-form ml-subscribe-form-29209213">
+      <div class="ml-form-align-center">
+        <div class="ml-form-embedWrapper embedForm">
+          <form class="ml-block-form" action="https://assets.mailerlite.com/jsonp/1712398/forms/161825890702984753/subscribe" method="post" target="_blank">
+            <div class="ml-form-embedHeader">
+              <img src="https://storage.mlcdn.com/account_image/1712398/xwkP82QmihkBYNk5M4xuzdKo1msUKMrQFcnIglPe.png" alt="AirCard Pro Logo">
+            </div>
+            <div class="ml-form-embedBody">
+              <div class="ml-form-embedContent">
+                <h4>The Last Business Card You'll Ever Need</h4>
+                <p>Join the waitlist to be the first to create your smart, scannable, AirDroppable business card.<br><br>Save trees. Save time. Look sharp.</p>
+              </div>
+              <div class="ml-form-fieldRow">
+                <input type="email" name="fields[email]" placeholder="Email" required>
+              </div>
+              <div class="ml-form-checkboxRow">
+                <label>
+                  <input type="checkbox"> Opt in to receive news and updates.
+                </label>
+              </div>
+              <div class="ml-form-embedSubmit">
+                <button type="submit" class="primary">Subscribe</button>
+              </div>
+            </div>
+          </form>
+        </div>
+      </div>
     </div>
+    <!-- End MailerLite Form -->
   </div>
 
 </body>
