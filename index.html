@@ -8,25 +8,25 @@
     /* Background & Text */
     body {
       font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
-      background-color: #121212; /* deep dark for contrast */
       color: #f1f1f1;
       margin: 0;
       padding: 0;
       text-align: center;
+
+      /* gradient overlay + wallet-style bg image */
+      background:
+        linear-gradient(rgba(0,0,0,0.65), rgba(0,0,0,0.65)),
+        url("./assets/bg.png") center / cover no-repeat fixed;
     }
 
     /* Logo */
-    header {
-      padding: 30px 20px 10px 20px;
-    }
+    header { padding: 30px 20px 10px 20px; }
     header img {
       max-width: 100px;
       margin-bottom: 20px;
       transition: transform 0.3s ease;
     }
-    header img:hover {
-      transform: scale(1.05);
-    }
+    header img:hover { transform: scale(1.05); }
 
     /* Headline */
     h1 {
@@ -55,11 +55,12 @@
 
     /* Form Box */
     .ml-form-embedWrapper {
-      background: #1e1e1e !important;
+      background: rgba(30,30,30,0.92) !important;
       border: 2px solid #00a2ff !important;
       border-radius: 10px !important;
       padding: 20px;
       animation: fadeInUp 1s ease forwards;
+      backdrop-filter: saturate(120%) blur(6px);
     }
 
     /* Input Field */
@@ -89,11 +90,11 @@
     /* Animations */
     @keyframes fadeInUp {
       from { opacity: 0; transform: translateY(20px); }
-      to { opacity: 1; transform: translateY(0); }
+      to   { opacity: 1; transform: translateY(0); }
     }
     @keyframes fadeInDown {
       from { opacity: 0; transform: translateY(-20px); }
-      to { opacity: 1; transform: translateY(0); }
+      to   { opacity: 1; transform: translateY(0); }
     }
   </style>
 </head>
@@ -108,16 +109,19 @@
       Save trees. Save time. Look sharp.
     </p>
   </header>
-<section style="max-width:760px;margin:28px auto;padding:0 16px;text-align:left;line-height:1.6;color:#cfcfcf">
-  <h2 style="color:#00a2ff;margin:0 0 10px;">Your business card, inside a Wallet-style app</h2>
-  <p style="margin:0 0 10px;">Create a beautiful, scannable card you can update anytime. Share it in seconds:</p>
-  <ul style="margin:0 0 14px 18px;">
-    <li>AirDrop from your iPhone share menu</li>
-    <li>Save as a Contact and use <strong>NameDrop</strong> (touch iPhones top-to-top)</li>
-    <li>Optional <strong>NFC tap</strong> opens your card instantly</li>
-  </ul>
-  <p style="margin:0 0 6px;"><strong>Early access is free now.</strong> Pricing starts later—lock in your spot.</p>
-</section>
+
+  <!-- EXPLAINER -->
+  <section style="max-width:760px;margin:28px auto;padding:0 16px;text-align:left;line-height:1.6;color:#cfcfcf">
+    <h2 style="color:#00a2ff;margin:0 0 10px;">Your business card, inside a Wallet-style app</h2>
+    <p style="margin:0 0 10px;">Create a beautiful, scannable card you can update anytime. Share it in seconds:</p>
+    <ul style="margin:0 0 14px 18px;">
+      <li>AirDrop from your iPhone share menu</li>
+      <li>Save as a Contact and use <strong>NameDrop</strong> (touch iPhones top-to-top)</li>
+      <li>Optional <strong>NFC tap</strong> opens your card instantly</li>
+    </ul>
+    <p style="margin:0 0 6px;"><strong>Early access is free now.</strong> Pricing starts later—lock in your spot.</p>
+  </section>
+
   <!-- FORM -->
   <div class="form-container">
     <!-- MailerLite Form Embed -->
@@ -151,6 +155,38 @@
     </div>
     <!-- End MailerLite Form -->
   </div>
+
+  <!-- Platform-specific tips (optional) -->
+  <script>
+    const isiOS = /iPad|iPhone|iPod/.test(navigator.userAgent) && !window.MSStream;
+    const isAndroid = /Android/.test(navigator.userAgent);
+    const tips = document.createElement('div');
+    tips.style.maxWidth = '760px';
+    tips.style.margin = '10px auto 24px';
+    tips.style.padding = '12px 16px';
+    tips.style.border = '1px solid #2a2a2a';
+    tips.style.borderRadius = '10px';
+    tips.style.background = 'rgba(255,255,255,0.03)';
+    tips.style.textAlign = 'left';
+    if (isiOS) {
+      tips.innerHTML = `<strong>iPhone tips:</strong>
+        <ul style="margin:8px 0 0 18px">
+          <li>Share → AirDrop to send your card.</li>
+          <li>Download Contact (.vcf) then use <em>NameDrop</em>.</li>
+          <li>NFC tap opens your card instantly.</li>
+          <li>Add to Home Screen for a Wallet-style shortcut.</li>
+        </ul>`;
+    } else if (isAndroid) {
+      tips.innerHTML = `<strong>Android tips:</strong>
+        <ul style="margin:8px 0 0 18px">
+          <li>Share → Nearby Share to send your card.</li>
+          <li>Open the .vcf to save to Contacts.</li>
+          <li>NFC tap opens your card instantly.</li>
+          <li>Add to Home Screen for one-tap access.</li>
+        </ul>`;
+    }
+    document.body.appendChild(tips);
+  </script>
 
 </body>
 </html>
