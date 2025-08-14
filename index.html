@@ -14,14 +14,15 @@
       position: relative;
       background: #0e141a; /* fallback color */
     }
-        /* Background image layer (keeps photo visible) */
+
+    /* Background image layer (visible photo) */
     body::before{
       content:"";
-      position:absolute;
+      position:fixed;
       inset:0;
       z-index:-1;
       background:
-        linear-gradient(rgba(0,0,0,0.35), rgba(0,0,0,0.35)), /* adjust 0.35–0.55 if needed */
+        linear-gradient(rgba(0,0,0,0.35), rgba(0,0,0,0.35)),
         url("/assets/bg_optimized.png?v=2") center / cover no-repeat;
     }
 
@@ -86,71 +87,107 @@
     .ml-form-embedWrapper button.primary:hover { background:#0090e0 !important; box-shadow:0 0 10px #00a2ff; }
     .ml-form-embedWrapper button.primary:active { transform: translateY(1px); }
 
-    /* Small screens */
-    @media (max-width: 520px){
-      .header-glass { padding: 16px 16px; }
-      h1 { font-size: 1.7rem; }
-      p.subtext { font-size: 1rem; }
+    /* === Phone overlay (embed live Glide app inside phone in hero image) === */
+    #hero-wrap { position: relative; }
+
+    .phone-overlay {
+      position: absolute;
+      /* Tweak these three to align to your photo's phone screen */
+      left: 58.2%;
+      top: 22.6%;
+      width: 18.8%;
+      aspect-ratio: 9 / 19.5;  /* modern iPhone screen ratio */
+      border-radius: 24px;
+      overflow: hidden;
+      box-shadow: 0 12px 30px rgba(0,0,0,0.35);
+      z-index: 2;
+      /* If the phone is slightly angled in your photo, uncomment & tweak: */
+      /* transform: rotate(-1.3deg); transform-origin: center; */
+    }
+
+    .phone-overlay iframe {
+      width: 100%;
+      height: 100%;
+      border: 0;
+    }
+
+    /* Hide overlay on small screens so it doesn't block content */
+    @media (max-width: 900px) {
+      .phone-overlay { display: none; }
     }
   </style>
 </head>
 <body>
 
-  <!-- HEADER -->
-  <header>
-    <div class="header-glass">
-      <img src="https://storage.mlcdn.com/account_image/1712398/xwkP82QmihkBYNk5M4xuzdKo1msUKMrQFcnIglPe.png" alt="AirCard Pro Logo" />
-      <h1>The Last Business Card You'll Ever Need</h1>
-      <p class="subtext">
-        Join the waitlist to be the first to create your smart, scannable, AirDroppable business card.<br>
-        Save trees. Save time. Look sharp.
-      </p>
-    </div>
-  </header>
+  <div id="hero-wrap">
+    <!-- HEADER -->
+    <header>
+      <div class="header-glass">
+        <img src="https://storage.mlcdn.com/account_image/1712398/xwkP82QmihkBYNk5M4xuzdKo1msUKMrQFcnIglPe.png" alt="AirCard Pro Logo" />
+        <h1>The Last Business Card You'll Ever Need</h1>
+        <p class="subtext">
+          Join the waitlist to be the first to create your smart, scannable, AirDroppable business card.<br>
+          Save trees. Save time. Look sharp.
+        </p>
+      </div>
+    </header>
 
-  <!-- EXPLAINER -->
-  <section class="copy">
-    <h2>Your business card, inside a Wallet-style app</h2>
-    <p>Create a beautiful, scannable card you can update anytime. Share it in seconds:</p>
-    <ul>
-      <li>AirDrop from your iPhone share menu</li>
-      <li>Save as a Contact and use <strong>NameDrop</strong> (touch iPhones top-to-top)</li>
-      <li>Optional <strong>NFC tap</strong> opens your card instantly</li>
-    </ul>
-    <p><strong>Early access is free now.</strong> Pricing starts later—lock in your spot.</p>
-  </section>
+    <!-- EXPLAINER -->
+    <section class="copy">
+      <h2>Your business card, inside a Wallet-style app</h2>
+      <p>Create a beautiful, scannable card you can update anytime. Share it in seconds:</p>
+      <ul>
+        <li>AirDrop from your iPhone share menu</li>
+        <li>Save as a Contact and use <strong>NameDrop</strong> (touch iPhones top-to-top)</li>
+        <li>Optional <strong>NFC tap</strong> opens your card instantly</li>
+      </ul>
+      <p><strong>Early access is free now.</strong> Pricing starts later—lock in your spot.</p>
+    </section>
 
-  <!-- FORM -->
-  <div class="form-container">
-    <div id="mlb2-29209213" class="ml-form-embedContainer ml-subscribe-form ml-subscribe-form-29209213">
-      <div class="ml-form-align-center">
-        <div class="ml-form-embedWrapper embedForm">
-          <form class="ml-block-form" action="https://assets.mailerlite.com/jsonp/1712398/forms/161825890702984753/subscribe" method="post" target="_blank">
-            <div class="ml-form-embedHeader">
-              <img src="https://storage.mlcdn.com/account_image/1712398/xwkP82QmihkBYNk5M4xuzdKo1msUKMrQFcnIglPe.png" alt="AirCard Pro Logo" style="max-width:90px;">
-            </div>
-            <div class="ml-form-embedBody">
-              <div class="ml-form-embedContent">
-                <h4 style="margin:0 0 8px;color:#fff;">The Last Business Card You'll Ever Need</h4>
-                <p style="margin:0 0 14px;color:#eaeaea;">Join the waitlist for AirCard Pro. Save trees. Save time. Look sharp.</p>
+    <!-- FORM -->
+    <div class="form-container">
+      <div id="mlb2-29209213" class="ml-form-embedContainer ml-subscribe-form ml-subscribe-form-29209213">
+        <div class="ml-form-align-center">
+          <div class="ml-form-embedWrapper embedForm">
+            <form class="ml-block-form" action="https://assets.mailerlite.com/jsonp/1712398/forms/161825890702984753/subscribe" method="post" target="_blank">
+              <div class="ml-form-embedHeader">
+                <img src="https://storage.mlcdn.com/account_image/1712398/xwkP82QmihkBYNk5M4xuzdKo1msUKMrQFcnIglPe.png" alt="AirCard Pro Logo" style="max-width:90px;">
               </div>
-              <div class="ml-form-fieldRow">
-                <input type="email" name="fields[email]" placeholder="Your email address" required>
+              <div class="ml-form-embedBody">
+                <div class="ml-form-embedContent">
+                  <h4 style="margin:0 0 8px;color:#fff;">The Last Business Card You'll Ever Need</h4>
+                  <p style="margin:0 0 14px;color:#eaeaea;">Join the waitlist for AirCard Pro. Save trees. Save time. Look sharp.</p>
+                </div>
+                <div class="ml-form-fieldRow">
+                  <input type="email" name="fields[email]" placeholder="Your email address" required>
+                </div>
+                <div class="ml-form-checkboxRow" style="text-align:left;color:#cfcfcf;margin:10px 0;">
+                  <label>
+                    <input type="checkbox"> Opt in to receive news and updates.
+                  </label>
+                </div>
+                <div class="ml-form-embedSubmit">
+                  <button type="submit" class="primary">Subscribe</button>
+                </div>
               </div>
-              <div class="ml-form-checkboxRow" style="text-align:left;color:#cfcfcf;margin:10px 0;">
-                <label>
-                  <input type="checkbox"> Opt in to receive news and updates.
-                </label>
-              </div>
-              <div class="ml-form-embedSubmit">
-                <button type="submit" class="primary">Subscribe</button>
-              </div>
-            </div>
-          </form>
+            </form>
+          </div>
         </div>
       </div>
+    </div>
+
+    <!-- Phone overlay with live Glide app -->
+    <div class="phone-overlay">
+      <iframe
+        src="https://prized-system-0813.glide.page"
+        title="AirCard Pro App"
+        loading="lazy"
+        referrerpolicy="no-referrer"
+        allow="clipboard-write; fullscreen"
+      ></iframe>
     </div>
   </div>
 
 </body>
 </html>
+
