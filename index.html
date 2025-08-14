@@ -5,30 +5,65 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>AirCard Pro - The Last Business Card You'll Ever Need</title>
   <style>
-    html, body { min-height: 100%; margin: 0; padding: 0; }
+    html, body {
+      min-height: 100%;
+      margin: 0;
+      padding: 0;
+    }
     body {
       font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
       color: #f1f1f1;
       text-align: center;
       position: relative;
-      background: linear-gradient(rgba(0,0,0,0.65), rgba(0,0,0,0.65)),
-                  url("/assets/bg.png?v=4") center / cover no-repeat fixed;
+      background: #0e141a;
+    }
+    /* Background image layer */
+    body::before {
+      content: "";
+      position: fixed;
+      inset: 0;
+      z-index: -1;
+      background:
+        linear-gradient(rgba(0,0,0,0.25), rgba(0,0,0,0.25)), /* lighter overlay so picture is visible */
+        url("/assets/bg_optimized.jpg") center / cover no-repeat;
     }
     header { padding: 30px 20px 10px 20px; }
     header img { max-width: 100px; margin-bottom: 20px; transition: transform .3s ease; }
     header img:hover { transform: scale(1.05); }
     h1 { font-size: 2rem; color: #00a2ff; margin-bottom: 10px; }
-    p.subtext { font-size: 1.1rem; color: #ccc; line-height: 1.5; max-width: 500px; margin: 0 auto 30px; }
+    p.subtext { font-size: 1.1rem; color: #fff; line-height: 1.5; max-width: 500px; margin: 0 auto 30px; }
     .form-container { display: flex; justify-content: center; padding: 20px; }
-    .ml-form-embedWrapper { background: rgba(30,30,30,0.92) !important; border: 2px solid #00a2ff !important; border-radius: 10px !important; padding: 20px; backdrop-filter: saturate(120%) blur(6px); }
-    .ml-form-embedWrapper input[type="email"] { background: #121212 !important; border: 2px solid #00a2ff !important; border-radius: 6px !important; color: #fff !important; padding: 12px !important; font-size: 1rem !important; }
-    .ml-form-embedWrapper button.primary { background: #00a2ff !important; border-radius: 8px !important; padding: 12px; font-size: 1rem; font-weight: bold; transition: background .3s, box-shadow .3s; }
-    .ml-form-embedWrapper button.primary:hover { background: #0090e0 !important; box-shadow: 0 0 10px #00a2ff; }
+    .ml-form-embedWrapper {
+      background: rgba(30,30,30,0.85) !important;
+      border: 2px solid #00a2ff !important;
+      border-radius: 10px !important;
+      padding: 20px;
+      backdrop-filter: saturate(120%) blur(6px);
+    }
+    .ml-form-embedWrapper input[type="email"] {
+      background: #121212 !important;
+      border: 2px solid #00a2ff !important;
+      border-radius: 6px !important;
+      color: #fff !important;
+      padding: 12px !important;
+      font-size: 1rem !important;
+    }
+    .ml-form-embedWrapper button.primary {
+      background: #00a2ff !important;
+      border-radius: 8px !important;
+      padding: 12px;
+      font-size: 1rem;
+      font-weight: bold;
+      transition: background .3s, box-shadow .3s;
+    }
+    .ml-form-embedWrapper button.primary:hover {
+      background: #0090e0 !important;
+      box-shadow: 0 0 10px #00a2ff;
+    }
   </style>
 </head>
 <body>
 
-  <!-- HEADER -->
   <header>
     <img src="https://storage.mlcdn.com/account_image/1712398/xwkP82QmihkBYNk5M4xuzdKo1msUKMrQFcnIglPe.png" alt="AirCard Pro Logo" />
     <h1>The Last Business Card You'll Ever Need</h1>
@@ -38,21 +73,18 @@
     </p>
   </header>
 
-  <!-- EXPLAINER -->
-  <section style="max-width:760px;margin:28px auto;padding:0 16px;text-align:left;line-height:1.6;color:#cfcfcf">
+  <section style="max-width:760px;margin:28px auto;padding:0 16px;text-align:left;line-height:1.6;color:#fff;">
     <h2 style="color:#00a2ff;margin:0 0 10px;">Your business card, inside a Wallet-style app</h2>
-    <p style="margin:0 0 10px;">Create a beautiful, scannable card you can update anytime. Share it in seconds:</p>
+    <p>Create a beautiful, scannable card you can update anytime. Share it in seconds:</p>
     <ul style="margin:0 0 14px 18px;">
       <li>AirDrop from your iPhone share menu</li>
-      <li>Save as a Contact and use <strong>NameDrop</strong> (touch iPhones top-to-top)</li>
+      <li>Save as a Contact and use <strong>NameDrop</strong></li>
       <li>Optional <strong>NFC tap</strong> opens your card instantly</li>
     </ul>
-    <p style="margin:0 0 6px;"><strong>Early access is free now.</strong> Pricing starts later—lock in your spot.</p>
+    <p><strong>Early access is free now.</strong> Pricing starts later—lock in your spot.</p>
   </section>
 
-  <!-- FORM -->
   <div class="form-container">
-    <!-- MailerLite Form Embed -->
     <div id="mlb2-29209213" class="ml-form-embedContainer ml-subscribe-form ml-subscribe-form-29209213">
       <div class="ml-form-align-center">
         <div class="ml-form-embedWrapper embedForm">
@@ -81,40 +113,7 @@
         </div>
       </div>
     </div>
-    <!-- End MailerLite Form -->
   </div>
-
-  <!-- Platform-specific tips -->
-  <script>
-    const isiOS = /iPad|iPhone|iPod/.test(navigator.userAgent) && !window.MSStream;
-    const isAndroid = /Android/.test(navigator.userAgent);
-    const tips = document.createElement('div');
-    tips.style.maxWidth = '760px';
-    tips.style.margin = '10px auto 24px';
-    tips.style.padding = '12px 16px';
-    tips.style.border = '1px solid #2a2a2a';
-    tips.style.borderRadius = '10px';
-    tips.style.background = 'rgba(255,255,255,0.03)';
-    tips.style.textAlign = 'left';
-    if (isiOS) {
-      tips.innerHTML = `<strong>iPhone tips:</strong>
-        <ul style="margin:8px 0 0 18px">
-          <li>Share → AirDrop to send your card.</li>
-          <li>Download Contact (.vcf) then use <em>NameDrop</em>.</li>
-          <li>NFC tap opens your card instantly.</li>
-          <li>Add to Home Screen for a Wallet-style shortcut.</li>
-        </ul>`;
-    } else if (isAndroid) {
-      tips.innerHTML = `<strong>Android tips:</strong>
-        <ul style="margin:8px 0 0 18px">
-          <li>Share → Nearby Share to send your card.</li>
-          <li>Open the .vcf to save to Contacts.</li>
-          <li>NFC tap opens your card instantly.</li>
-          <li>Add to Home Screen for one-tap access.</li>
-        </ul>`;
-    }
-    document.body.appendChild(tips);
-  </script>
 
 </body>
 </html>
