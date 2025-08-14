@@ -5,98 +5,37 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>AirCard Pro - The Last Business Card You'll Ever Need</title>
   <style>
-    /* Background & Text */
-    body {
-      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
-      color: #f1f1f1;
-      margin: 0;
-      padding: 0;
-      text-align: center;
+  /* base */
+  html, body { min-height: 100%; margin: 0; padding: 0; }
+  body {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+    color: #f1f1f1; text-align: center; position: relative;
+    background: #0e141a; /* fallback color */
+  }
 
-      /* gradient overlay + wallet-style bg image */
-      background:
-        linear-gradient(rgba(0,0,0,0.65), rgba(0,0,0,0.65)),
-        url("./assets/bg.png?v=2") center / cover no-repeat fixed;
-    }
+  /* Wallet background as a fixed layer (desktop + mobile safe) */
+  body::before {
+    content: "";
+    position: fixed;
+    inset: 0;
+    z-index: -1; /* sit behind everything */
+    background:
+      linear-gradient(rgba(0,0,0,0.65), rgba(0,0,0,0.65)),
+      url("/assets/bg.png?v=3") center / cover no-repeat;
+  }
 
-    /* Logo */
-    header { padding: 30px 20px 10px 20px; }
-    header img {
-      max-width: 100px;
-      margin-bottom: 20px;
-      transition: transform 0.3s ease;
-    }
-    header img:hover { transform: scale(1.05); }
-
-    /* Headline */
-    h1 {
-      font-size: 2rem;
-      color: #00a2ff;
-      margin-bottom: 10px;
-      animation: fadeInDown 0.8s ease forwards;
-    }
-
-    /* Subtext */
-    p.subtext {
-      font-size: 1.1rem;
-      color: #ccc;
-      line-height: 1.5;
-      max-width: 500px;
-      margin: 0 auto 30px auto;
-      animation: fadeInUp 0.8s ease forwards;
-    }
-
-    /* Form Container */
-    .form-container {
-      display: flex;
-      justify-content: center;
-      padding: 20px;
-    }
-
-    /* Form Box */
-    .ml-form-embedWrapper {
-      background: rgba(30,30,30,0.92) !important;
-      border: 2px solid #00a2ff !important;
-      border-radius: 10px !important;
-      padding: 20px;
-      animation: fadeInUp 1s ease forwards;
-      backdrop-filter: saturate(120%) blur(6px);
-    }
-
-    /* Input Field */
-    .ml-form-embedWrapper input[type="email"] {
-      background: #121212 !important;
-      border: 2px solid #00a2ff !important;
-      border-radius: 6px !important;
-      color: #fff !important;
-      padding: 12px !important;
-      font-size: 1rem !important;
-    }
-
-    /* Submit Button */
-    .ml-form-embedWrapper button.primary {
-      background: #00a2ff !important;
-      border-radius: 8px !important;
-      padding: 12px;
-      font-size: 1rem;
-      font-weight: bold;
-      transition: background 0.3s ease, box-shadow 0.3s ease;
-    }
-    .ml-form-embedWrapper button.primary:hover {
-      background: #0090e0 !important;
-      box-shadow: 0 0 10px #00a2ff;
-    }
-
-    /* Animations */
-    @keyframes fadeInUp {
-      from { opacity: 0; transform: translateY(20px); }
-      to   { opacity: 1; transform: translateY(0); }
-    }
-    @keyframes fadeInDown {
-      from { opacity: 0; transform: translateY(-20px); }
-      to   { opacity: 1; transform: translateY(0); }
-    }
-  </style>
+  /* --- the rest of your styles --- */
+  header { padding: 30px 20px 10px 20px; }
+  header img { max-width: 100px; margin-bottom: 20px; transition: transform .3s ease; }
+  header img:hover { transform: scale(1.05); }
+  h1 { font-size: 2rem; color: #00a2ff; margin-bottom: 10px; }
+  p.subtext { font-size: 1.1rem; color: #ccc; line-height: 1.5; max-width: 500px; margin: 0 auto 30px; }
+  .form-container { display: flex; justify-content: center; padding: 20px; }
+  .ml-form-embedWrapper { background: rgba(30,30,30,0.92) !important; border: 2px solid #00a2ff !important; border-radius: 10px !important; padding: 20px; backdrop-filter: saturate(120%) blur(6px); }
+  .ml-form-embedWrapper input[type="email"] { background: #121212 !important; border: 2px solid #00a2ff !important; border-radius: 6px !important; color: #fff !important; padding: 12px !important; font-size: 1rem !important; }
+  .ml-form-embedWrapper button.primary { background: #00a2ff !important; border-radius: 8px !important; padding: 12px; font-size: 1rem; font-weight: bold; transition: background .3s, box-shadow .3s; }
+  .ml-form-embedWrapper button.primary:hover { background: #0090e0 !important; box-shadow: 0 0 10px #00a2ff; }
+</style>
 </head>
 <body>
 
