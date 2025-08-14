@@ -5,37 +5,26 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>AirCard Pro - The Last Business Card You'll Ever Need</title>
   <style>
-  /* base */
-  html, body { min-height: 100%; margin: 0; padding: 0; }
-  body {
-    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
-    color: #f1f1f1; text-align: center; position: relative;
-    background: #0e141a; /* fallback color */
-  }
-
-  /* Wallet background as a fixed layer (desktop + mobile safe) */
-  body::before {
-    content: "";
-    position: fixed;
-    inset: 0;
-    z-index: -1; /* sit behind everything */
-    background:
-      linear-gradient(rgba(0,0,0,0.65), rgba(0,0,0,0.65)),
-      url("/assets/bg.png?v=3") center / cover no-repeat;
-  }
-
-  /* --- the rest of your styles --- */
-  header { padding: 30px 20px 10px 20px; }
-  header img { max-width: 100px; margin-bottom: 20px; transition: transform .3s ease; }
-  header img:hover { transform: scale(1.05); }
-  h1 { font-size: 2rem; color: #00a2ff; margin-bottom: 10px; }
-  p.subtext { font-size: 1.1rem; color: #ccc; line-height: 1.5; max-width: 500px; margin: 0 auto 30px; }
-  .form-container { display: flex; justify-content: center; padding: 20px; }
-  .ml-form-embedWrapper { background: rgba(30,30,30,0.92) !important; border: 2px solid #00a2ff !important; border-radius: 10px !important; padding: 20px; backdrop-filter: saturate(120%) blur(6px); }
-  .ml-form-embedWrapper input[type="email"] { background: #121212 !important; border: 2px solid #00a2ff !important; border-radius: 6px !important; color: #fff !important; padding: 12px !important; font-size: 1rem !important; }
-  .ml-form-embedWrapper button.primary { background: #00a2ff !important; border-radius: 8px !important; padding: 12px; font-size: 1rem; font-weight: bold; transition: background .3s, box-shadow .3s; }
-  .ml-form-embedWrapper button.primary:hover { background: #0090e0 !important; box-shadow: 0 0 10px #00a2ff; }
-</style>
+    html, body { min-height: 100%; margin: 0; padding: 0; }
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+      color: #f1f1f1;
+      text-align: center;
+      position: relative;
+      background: linear-gradient(rgba(0,0,0,0.65), rgba(0,0,0,0.65)),
+                  url("/assets/bg.png?v=4") center / cover no-repeat fixed;
+    }
+    header { padding: 30px 20px 10px 20px; }
+    header img { max-width: 100px; margin-bottom: 20px; transition: transform .3s ease; }
+    header img:hover { transform: scale(1.05); }
+    h1 { font-size: 2rem; color: #00a2ff; margin-bottom: 10px; }
+    p.subtext { font-size: 1.1rem; color: #ccc; line-height: 1.5; max-width: 500px; margin: 0 auto 30px; }
+    .form-container { display: flex; justify-content: center; padding: 20px; }
+    .ml-form-embedWrapper { background: rgba(30,30,30,0.92) !important; border: 2px solid #00a2ff !important; border-radius: 10px !important; padding: 20px; backdrop-filter: saturate(120%) blur(6px); }
+    .ml-form-embedWrapper input[type="email"] { background: #121212 !important; border: 2px solid #00a2ff !important; border-radius: 6px !important; color: #fff !important; padding: 12px !important; font-size: 1rem !important; }
+    .ml-form-embedWrapper button.primary { background: #00a2ff !important; border-radius: 8px !important; padding: 12px; font-size: 1rem; font-weight: bold; transition: background .3s, box-shadow .3s; }
+    .ml-form-embedWrapper button.primary:hover { background: #0090e0 !important; box-shadow: 0 0 10px #00a2ff; }
+  </style>
 </head>
 <body>
 
@@ -95,7 +84,7 @@
     <!-- End MailerLite Form -->
   </div>
 
-  <!-- Platform-specific tips (optional) -->
+  <!-- Platform-specific tips -->
   <script>
     const isiOS = /iPad|iPhone|iPod/.test(navigator.userAgent) && !window.MSStream;
     const isAndroid = /Android/.test(navigator.userAgent);
